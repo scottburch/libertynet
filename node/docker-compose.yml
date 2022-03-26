@@ -1,0 +1,48 @@
+version: '3'
+services:
+  hornet:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: libertynet
+    ulimits:
+      nofile:
+        soft: 8192
+        hard: 8192
+    stop_grace_period: 5m
+    # Best performance via host network:
+    network_mode: host
+    # Else:
+#    ports:
+#      - "15600:15600/tcp"
+#      - "14626:14626/udp"
+#      - "14265:14265/tcp"
+#      - "8081:8081/tcp"
+#      - "8091:8091/tcp"
+#      - "1883:1883/tcp"
+    cap_drop:
+      - ALL
+    volumes:
+      - ./config.json:/app/config.json:ro
+      - ./config_devnet.json:/app/config_devnet.json:ro
+      - ./config_comnet.json:/app/config_comnet.json:ro
+      - ./peering.json:/app/peering.json
+      - ./profiles.json:/app/profiles.json:ro
+      - ./mainnetdb:/app/mainnetdb
+      - ./p2pstore:/app/p2pstore
+      - ./snapshots/mainnet:/app/snapshots/mainnet
+
+  bridge:
+    build:
+      context: ..
+      dockerfile: bridge/Dockerfile
+    image: libertynet-bridge
+    network_mode: host
+#
+#  nginx-proxy:
+#    image: jwilder/nginx-proxy
+#    ports:
+#      - "80:3000"
+#    volumes:
+#      - /var/run/docker.sock:/tmp/docker.sock:ro
+
