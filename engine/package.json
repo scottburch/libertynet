@@ -1,11 +1,11 @@
 {
   "name": "@libertynet/engine",
   "main": "src/index.ts",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "dependencies": {
     "@iota/iota.js": "^1.8.6",
     "@iota/util.js": "^1.8.6",
-    "@libertynet/with-context": "^1.0.0",
+    "@libertynet/with-context": "^1.0.2",
     "@types/chai": "^4.3.0",
     "@types/chai-as-promised": "^7.1.5",
     "@types/elliptic": "^6.4.14",

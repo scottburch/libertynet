@@ -1,10 +1,10 @@
 {
   "name": "@libertynet/api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "src/index.ts",
   "license": "MIT",
   "dependencies": {
-    "@libertynet/engine": "^1.0.0",
+    "@libertynet/engine": "^1.0.2",
     "@types/chai": "^4.3.0",
     "@types/chai-as-promised": "^7.1.5",
     "@types/lodash": "^4.14.179",

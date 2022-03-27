@@ -1,6 +1,6 @@
 {
   "name": "@libertynet/with-context",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "src/with-context.ts",
   "license": "MIT",
   "dependencies": {
