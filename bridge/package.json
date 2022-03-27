@@ -32,5 +32,8 @@
   },
   "scripts": {
     "start-bridge": "ts-node src/bridge-server.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

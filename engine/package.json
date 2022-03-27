@@ -30,5 +30,8 @@
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts",
     "compile-proto": "ts-node src/compile-proto.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

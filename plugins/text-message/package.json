@@ -21,5 +21,8 @@
   },
   "scripts": {
     "compile-proto": "ts-node src/generate-proto.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
