@@ -23,7 +23,7 @@ services:
     cap_drop:
       - ALL
     volumes:
-      - ./config.json:/app/config.json:ro
+      - ./config.json:/app/config.json
       - ./config_devnet.json:/app/config_devnet.json:ro
       - ./config_comnet.json:/app/config_comnet.json:ro
       - ./peering.json:/app/peering.json

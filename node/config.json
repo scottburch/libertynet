@@ -33,12 +33,12 @@
   },
   "dashboard": {
     "bindAddress": "localhost:8081",
-    "dev": false,
+    "dev": true,
     "auth": {
       "sessionTimeout": "72h",
       "username": "admin",
-      "passwordHash": "0000000000000000000000000000000000000000000000000000000000000000",
-      "passwordSalt": "0000000000000000000000000000000000000000000000000000000000000000"
+      "passwordHash": "6466050fcb899dc6b2496343ecf86228c11b05e3cab3f2ad9cc78e508f8054c6",
+      "passwordSalt": "7084ed856e6efbd77605a14ce463500c0f77b18e07a8efe226107a1b0dce7866"
     }
   },
   "db": {
