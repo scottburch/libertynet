@@ -22,7 +22,8 @@ module.exports = {
             {
                 test: /\.ts/,
                 loader: 'ts-loader',
-                exclude: [/node_modules/],
+                exclude: (path) => path.includes('node_modules') && !path.includes('@libertynet'),
+                options: { allowTsInNodeModules: true }
             },
             {
                 test: /\.css$/,

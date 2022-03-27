@@ -22,10 +22,8 @@ export const Home: React.FC = () => {
                 where individual liberty is the only rule.
             </p>
                 <p>
-                <ul><li>No censorship</li> <li>no rules</li><li> no terms of service</li></ul></p>
-            <p><b>
-                You
-            </b></p>
+                <ul><li>No censorship</li> <li>no rules</li><li> no terms of service</li></ul>
+                </p>
             <h5>How is this possible?</h5>
             <p>
                 By using DAG technology, we are able to create a peer-to-peer community of distributed nodes.

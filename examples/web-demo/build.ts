@@ -1,8 +1,7 @@
 import {$, path} from 'zx'
 import * as fs from 'fs/promises'
 
-//$`yarn webpack`
-Promise.resolve()
+$`yarn webpack`
     .then(() => fs.readFile(path.join(__dirname, 'src/index.html')))
     .then(html => html.toString().split('//js-here'))
     .then(([start, end]) =>

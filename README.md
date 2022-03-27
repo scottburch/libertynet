@@ -26,13 +26,13 @@ Any data written is signed by the user.  There is no central gatekeeper for addi
 
 * Open a browser and go to `http://localhost:8081` wait for 'sync' and 'health to turn green'
 
-* Make sure that node, yarn and lerna are installed on your system
+* Make sure that node is installed on your system
 
 * `cd examples/web-demo`
 
-* `lerna bootstrap`
+* `yarn` or `nom install`
 
-* `yarn build`
+* `yarn build` or `npm run build`
 
 * Open the newly created file in examples/web-demo/lib/index.html in a web browser
 
