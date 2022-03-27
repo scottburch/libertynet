@@ -8,5 +8,6 @@
     "bridge"
   ],
   "version": "0.0.0",
+  "npmClientArgs": ["--access", "public"],
   "npmClient": "yarn"
 }
