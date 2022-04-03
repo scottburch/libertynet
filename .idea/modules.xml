@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/free.iml" filepath="$PROJECT_DIR$/.idea/free.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hornet/hornet.iml" filepath="$PROJECT_DIR$/../hornet/hornet.iml" />
     </modules>
   </component>
 </project>

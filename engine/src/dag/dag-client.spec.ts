@@ -6,7 +6,7 @@ import {
     doesNodeExist,
     searchSignedObjs,
     readSignedObjectsSorted,
-    KeySet
+    KeySet, readNewestSignedObject
 } from "./dag-client";
 import {expect} from "chai";
 import {identity, map} from "lodash/fp";
@@ -18,6 +18,18 @@ import {get} from "lodash/fp";
 
 describe('dag-client specifications', function () {
     this.timeout(120_000);
+
+    it('should store an object', () => {
+        return storeSignedObject(newLocalDbConnector('test-uid'), ['my-key'], SignedObj.create({
+            owner: 'scott',
+        }))
+    });
+
+    it('should read an object', () => {
+        return readNewestSignedObject(newLocalDbConnector('test-uid'), ['my-key'])
+            .then(console.log);
+    })
+
 
     it('should return an empty list when reading invalid sorted signed objects', () => {
         return readSignedObjectsSorted(newLocalDbConnector('uid'), ['fake'])
