@@ -1,12 +1,4 @@
-import {
-    Network,
-    ClientOptions,
-    login,
-    searchUsers,
-    signup,
-    newLocalDbConnector, newRemoteDbConnector
-} from "@libertynet/api";
-import {readUser} from "@libertynet/api";
+import {ClientOptions, login, Network, newRemoteDbConnector, readUser, searchUsers, signup} from "@libertynet/api";
 import {readTextMessagesForUser, storeTextMessage} from "@libertynet/text-message/src/textMessage";
 import {bind} from "@react-rxjs/core";
 import {BehaviorSubject} from "rxjs";
@@ -30,7 +22,6 @@ export interface MsgData {
 }
 
 const clientSubject = new BehaviorSubject({
-//    connector: newRemoteDbConnector('http://13.215.35.72:3000/json-rpc', Network.DEVNET),
     connector: newRemoteDbConnector('http://localhost:3000/json-rpc', Network.DEVNET),
 //    connector: newLocalDbConnector(Network.DEVNET),
     username: 'guest',

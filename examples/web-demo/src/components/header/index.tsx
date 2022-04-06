@@ -8,7 +8,7 @@ export const Header: React.FC = () => {
 
     return (
         <header style={{backgroundColor: '#063cb7', color: 'white', padding: 5}}>
-            <h1>Free Speech Net</h1>
+            <h1>LibertyNet demo</h1>
             <nav>
                 <NavLink to="/" style={linkStyle}>
                     Home

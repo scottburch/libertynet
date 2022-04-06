@@ -84,6 +84,7 @@ export const Profile: React.FC = () => {
                     <WaitSpinner visible={waiting}/>
                     Submit
                 </Button>
+                <div>Submission can take a while while waiting for confirmation on the network.</div>
             </Form>
 
         </div>

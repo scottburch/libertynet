@@ -42,6 +42,8 @@ export const NewMessage: React.FC = () => {
                     <WaitSpinner visible={sending}/>
                     Send
                 </Button>
+                <div>Submission can take a while while waiting for confirmation on the network.</div>
+
             </Form>
 
         </>
