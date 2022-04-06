@@ -189,8 +189,6 @@
     "autopeering": {
       "bindAddress": "0.0.0.0:14626",
       "entryNodes": [
-        "/ip4/44.224.38.113/udp/14626/autopeering/12D3KooWJPFZokuqzKd5xKtCRnzkakhfV3KhDQ1dNn9BV7DbYbKd",
-        "/ip4/52.13.128.169/udp/14626/autopeering/12D3KooWSzrRWNmzUnULV9VrQdTHnQ1qvrwnbZ5mCHNJ8eotc4gL",
         "/dns/lucamoser.ch/udp/14826/autopeering/4H6WV54tB29u8xCcEaMGQMn37LFvM1ynNpp27TTXaqNM",
         "/dns/entry-hornet-0.h.chrysalis-mainnet.iotaledger.net/udp/14626/autopeering/iotaPHdAn7eueBnXtikZMwhfPXaeGJGXDt4RBuLuGgb",
         "/dns/entry-hornet-1.h.chrysalis-mainnet.iotaledger.net/udp/14626/autopeering/iotaJJqMd5CQvv1A61coSQCYW9PNT1QKPs7xh2Qg5K2",

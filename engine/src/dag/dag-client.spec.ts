@@ -16,8 +16,8 @@ import {newLocalDbConnector} from "./newLocalDbConnector";
 import {get} from "lodash/fp";
 
 
-describe('dag-client specifications', function () {
-    this.timeout(120_000);
+describe.skip('used for debugging', function() {
+    this.timeout(20_000);
 
     it('should store an object', () => {
         return storeSignedObject(newLocalDbConnector('test-uid'), ['my-key'], SignedObj.create({
@@ -30,6 +30,10 @@ describe('dag-client specifications', function () {
             .then(console.log);
     })
 
+})
+
+describe('dag-client specifications', function () {
+    this.timeout(120_000);
 
     it('should return an empty list when reading invalid sorted signed objects', () => {
         return readSignedObjectsSorted(newLocalDbConnector('uid'), ['fake'])

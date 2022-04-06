@@ -1,3 +1,9 @@
 {
-  "peers": []
+  "peers": [{
+    "alias": "liberty1",
+    "multiAddress": "/ip4/44.224.38.113/tcp/15600/p2p/12D3KooWHiW6wiR7Nyf5aj2Ug9rnW99yvnu1cF5orndAwFbHUVJc"
+  }, {
+    "alias": "liberty2",
+    "multiAddress": "/ip4/52.13.128.169/tcp/15600/p2p/12D3KooWMh32rL3XMFDAoWD58j1SXZ79NmZJH41bVaMSHS8o3G54"
+  }]
 }
