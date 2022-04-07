@@ -3,7 +3,7 @@
     "common-utils/with-context",
     "engine",
     "api",
-    "plugins/text-message",
+    "plugins/payload/text-message",
     "bridge"
   ],
   "version": "1.0.2",

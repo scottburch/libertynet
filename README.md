@@ -43,3 +43,48 @@ Any data written is signed by the user.  There is no central gatekeeper for addi
 * `yarn build` or `npm run build`
 
 * Open the newly created file in examples/web-demo/lib/index.html in a web browser
+
+
+
+#### Basic Architecture
+
+There are two basic possible architectures, with a bridge and without.  If your IOTA node is local to the clients, then the bridge is not necessary.  However, if your IOTA node is remote from your client app, you must use a bridge for performance.  Choosing whether or not to use a bridge in the client code is easy.  All of the communication functions use either of these two clients seamlessly.
+
+```javascript
+// With a bridge - use the address of the bridge and the network you wish to use
+newRemoteDbConnector('http://localhost:3000/json-rpc', Network.DEVNET)
+
+// Without a bridge - just the network you wish to use
+newLocalDbConnector(Network.DEVNET)
+
+```
+
+
+
+```mermaid
+sequenceDiagram
+	Client App->>IOTA Node: multiple Messages
+	IOTA Node->>Client App: multiple Results
+
+
+```
+
+
+
+```mermaid
+sequenceDiagram
+	Client App->>Bridge: searchUsers
+	Bridge->>IOTA Node: Multiple Messages
+	IOTA Node->>Bridge: Multiple Results
+	Bridge->>Client App: searchResults
+
+```
+
+#### Core API
+
+The core api consists of a group of functions that serve as the basic building blocks of a system.  It consists mainly of user management and storing/retrieving signed objects.  
+
+Any data that is stored must be stored as a signed object that is signed by a user.  There is a type generator that allows you to add any data type and wrap it as a signed object so it can be stored and retrieved by the platform.  By having users sign the data they are storing, a client that is retrieving data can be assured that the data has not been tampered with and does indeed belong to the user defined in the data.
+
+
+
