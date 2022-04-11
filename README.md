@@ -141,3 +141,33 @@ true or throws an error
 | client   | Client            | The client created with newClient()                          |
 | username | String (optional) | If the username is omitted, the username from client will be used |
 
+**Returns**
+
+A user object
+
+
+
+### updateProfile(client: Client, profile: UserProfile) : Promise\<unknown\>
+
+| Option      | Type   | Notes                             |
+| ----------- | ------ | --------------------------------- |
+| displayName | string | The display name for the username |
+| profile     | string | A public description              |
+
+
+
+### searchUsers(client: Client, prefix: string): Promise<User[]>
+
+| Option | Type   | Notes                                        |
+| ------ | ------ | -------------------------------------------- |
+| client | Client | The client created with newClient()          |
+| prefix | string | The first part of the username to search for |
+
+**Returns**
+
+A list of users
+
+
+
+### storeObject(params: StoreObjectParams) : Promise\<NodeId\>
+
