@@ -77,7 +77,6 @@ sequenceDiagram
 	Bridge->>IOTA Node: Multiple Messages
 	IOTA Node->>Bridge: Multiple Results
 	Bridge->>Client App: searchResults
-
 ```
 
 #### Core API
@@ -86,5 +85,59 @@ The core api consists of a group of functions that serve as the basic building b
 
 Any data that is stored must be stored as a signed object that is signed by a user.  There is a type generator that allows you to add any data type and wrap it as a signed object so it can be stored and retrieved by the platform.  By having users sign the data they are storing, a client that is retrieving data can be assured that the data has not been tampered with and does indeed belong to the user defined in the data.
 
+### newClient(options: ClientOptions)
 
+**clientOptions**
+
+| Option    | Type        | Notes                                                |
+| --------- | ----------- | ---------------------------------------------------- |
+| username  | string      | The user name                                        |
+| password  | string      | The users password                                   |
+| connector | DbConnector | Either the local or remote connector described above |
+
+**Returns**
+
+A client object to be used as an argment for the other functions
+
+
+### login(client: Client) : Promise\<boolean\>
+
+Logs in using the client created with newClient()
+
+**Returns**
+
+true or throws an error
+
+
+### signup(client: Client, profile: UserProfile) : Promise\<unknown\>
+
+| Option  | Type        | Notes                                  |
+| ------- | ----------- | -------------------------------------- |
+| client  | Client      | The client created with newClient()    |
+| profile | UserProfile | {displayName: string, profile: string} |
+
+**UserProfile**
+
+| Option      | Type   | Notes                             |
+| ----------- | ------ | --------------------------------- |
+| displayName | string | The display name for the username |
+| profile     | string | A public description              |
+
+
+
+### doesUsernameExist(client: Client, username: ?string) : Promise\<boolean\>
+
+| Option   | Type              | Notes                                                        |
+| -------- | ----------------- | ------------------------------------------------------------ |
+| client   | Client            | The client created with newClient()                          |
+| username | string (optional) | The username to check, if none is provided will use the username in client |
+
+
+
+### readUser(client: Client, username: ?string) : Promise\<User\>
+
+| Option   | Type              | Notes                                                        |
+| -------- | ----------------- | ------------------------------------------------------------ |
+| client   | Client            | The client created with newClient()                          |
+| username | String (optional) | If the username is omitted, the username from client will be used |
 
