@@ -1,7 +1,7 @@
 import {getKeyPair, sign, isMyUser, verify, signStoredObj, verifySignedObjSignature, validateOwner} from "./crypto";
 import {expect} from "chai";
 import {passThroughAwait} from "promise-passthrough";
-import {withCtxAwait} from "@libertynet/with-context";
+import {withCtxAwait} from "@scottburch/with-context";
 import {UserPayload} from "../payloadType/UserPayload";
 import {PayloadType} from "../payloadType/PayloadType";
 import {storeUser} from "../user/user";
@@ -63,7 +63,7 @@ describe('crypto', function() {
 
     it('should verify a signed object against a owner', () => {
         const username = Date.now().toString();
-        const connector = newLocalDbConnector('testnetuid');
+        const connector = newLocalDbConnector();
         return Promise.resolve(UserPayload.fromObject({
             username: username,
             displayName: '',
@@ -85,6 +85,5 @@ const FakePayload: PayloadType<{foo:string}> = {
     fromSignedObj: (obj) => ({foo: new TextDecoder().decode(obj.payload?.value?.buffer)}),
     getSignString: (obj) => obj.foo,
     getTypeUrl: () => 'fake',
-    encoder: x => new TextEncoder().encode(x.foo),
-    getUid: () => 'faker'
+    encoder: x => new TextEncoder().encode(x.foo)
 }

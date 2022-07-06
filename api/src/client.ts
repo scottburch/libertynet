@@ -62,7 +62,7 @@ export const searchUsers = (client: ClientOptions, prefix: string): Promise<User
     searchObjects({
         client,
         payloadType: UserPayload,
-        keys: [UserPayload.getUid(), prefix]
+        keys: [prefix]
     });
 
 export interface SearchObjectsParams<T> {

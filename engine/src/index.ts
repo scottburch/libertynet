@@ -1,5 +1,5 @@
 export {readSignedUser, readUser} from "./user/user";
-export {Network, DagNetwork} from "./constants";
+export {DagNetwork} from "./constants";
 export type {IUser} from "./user/user.pb";
 export {isMyUser} from "./crypto/crypto";
 export {storeUser} from "./user/user";

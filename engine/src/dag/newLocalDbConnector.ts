@@ -3,8 +3,7 @@ import {DbConnector} from "./DbConnector";
 
 
 
-export const newLocalDbConnector = (networkUid: string): DbConnector => ({
-    networkUid,
+export const newLocalDbConnector = (): DbConnector => ({
     readSignedObjectsSorted: readSignedObjectsSorted,
     storeSignedObject: storeSignedObject,
     waitUntilNodeIncluded: waitUntilNodeIncluded,

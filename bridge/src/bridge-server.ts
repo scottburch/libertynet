@@ -13,24 +13,24 @@ const { JSONRPCServer } = require("json-rpc-2.0");
 const bridgeServer = new JSONRPCServer();
 
 
-bridgeServer.addMethod('readSignedObjectsSorted', ({connector, keys} :{
+bridgeServer.addMethod('readSignedObjectsSorted', ({keys} :{
     connector: DbConnector,
     keys: string[]
-}) => newLocalDbConnector(connector.networkUid).readSignedObjectsSorted(newLocalDbConnector(connector.networkUid), keys)
+}) => newLocalDbConnector().readSignedObjectsSorted(newLocalDbConnector(), keys)
     .then(map(obj => Buffer.from(SignedObj.encode(obj).finish()).toString('base64'))));
 
-bridgeServer.addMethod('storeSignedObject', ({connector, keys, obj}: {
+bridgeServer.addMethod('storeSignedObject', ({keys, obj}: {
     connector: DbConnector, keys: string[], obj: string
-}) => newLocalDbConnector(connector.networkUid).storeSignedObject(newLocalDbConnector(connector.networkUid), keys, SignedObj.decode(Buffer.from(obj, 'base64'))));
+}) => newLocalDbConnector().storeSignedObject(newLocalDbConnector(), keys, SignedObj.decode(Buffer.from(obj, 'base64'))));
 
-bridgeServer.addMethod('waitUntilNodeIncluded', ({connector, nodeId, timeout}: {
+bridgeServer.addMethod('waitUntilNodeIncluded', ({nodeId, timeout}: {
     connector: DbConnector, nodeId: NodeId, timeout?: number
-}) => newLocalDbConnector(connector.networkUid).waitUntilNodeIncluded(newLocalDbConnector(connector.networkUid), nodeId, timeout));
+}) => newLocalDbConnector().waitUntilNodeIncluded(newLocalDbConnector(), nodeId, timeout));
 
-bridgeServer.addMethod('searchSignedObjs', ({connector, keys}: {
+bridgeServer.addMethod('searchSignedObjs', ({keys}: {
     connector: DbConnector, keys: string[]
 }) =>
-    newLocalDbConnector(connector.networkUid).searchSignedObjs(newLocalDbConnector(connector.networkUid), keys)
+    newLocalDbConnector().searchSignedObjs(newLocalDbConnector(), keys)
         .then(map(obj => Buffer.from(SignedObj.encode(obj).finish()).toString('base64')))
 )
 

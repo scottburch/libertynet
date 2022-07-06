@@ -5,7 +5,7 @@ import {TextMessagePayload} from "./TextMessagePayload";
 export const storeTextMessage = (client: ClientOptions, msg: Required<ITextMessage>) =>
     storeObject({
         client,
-        keys: [TextMessagePayload.getUid(), client.username, Date.now().toString()],
+        keys: [client.username, Date.now().toString()],
         payloadType: TextMessagePayload,
         value: TextMessage.create(msg)
     });
@@ -14,7 +14,7 @@ export const storeTextMessage = (client: ClientOptions, msg: Required<ITextMessa
 export const readTextMessagesForUser = (client: ClientOptions): Promise<TextMessage[]> =>
     searchObjects({
         client,
-        keys: [TextMessagePayload.getUid(), client.username, ''],
+        keys: [client.username, ''],
         payloadType: TextMessagePayload
     });
 

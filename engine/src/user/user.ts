@@ -9,11 +9,11 @@ import {SignedObj} from "../crypto/signed-obj.pb";
 export const storeUser = curry((connector: DbConnector, user: User, password: string): Promise<NodeId> =>
     signStoredObj(UserPayload, user.username, password, user.username, user)
         .then(signedObj =>
-            connector.storeSignedObject(connector, [UserPayload.getUid(), user.username], signedObj)));
+            connector.storeSignedObject(connector, [user.username], signedObj)));
 
 
 export const readSignedUser = (connector: DbConnector, username: string): Promise<SignedObj | undefined> =>
-    connector.readSignedObjectsSorted(connector, [UserPayload.getUid(), username])
+    connector.readSignedObjectsSorted(connector, [username])
         .then(signedUsers => signedUsers.filter(user => user.pubKey === signedUsers[0].pubKey))
         .then(signedUsers => Promise.all(signedUsers.map(signedUser =>
             verifySignedObjSignature(UserPayload, signedUser)

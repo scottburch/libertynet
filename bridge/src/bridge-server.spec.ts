@@ -27,6 +27,6 @@ const getClient = () => Promise.resolve(Date.now().toString())
     .then(username => newClient({
             username: username,
             password: 'my-pass',
-            connector: newRemoteDbConnector('http://localhost:3000/json-rpc', Date.now().toString())
+            connector: newRemoteDbConnector('http://localhost:3000/json-rpc')
         })
 );

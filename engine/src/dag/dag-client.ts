@@ -1,5 +1,5 @@
 import {IIndexationPayload, IMessage, IMessageMetadata, INDEXATION_PAYLOAD_TYPE, SingleNodeClient} from "@iota/iota.js";
-import {withCtxAwait} from "@libertynet/with-context";
+import {withCtxAwait} from "@scottburch/with-context";
 import {Converter} from "@iota/util.js";
 import waitUntil from "async-wait-until";
 import {passThroughAwait} from "promise-passthrough";
@@ -64,7 +64,7 @@ export const storeSignedObject = (connector: DbConnector, keys: string[], obj: S
     }
 }
 
-const makeMetaKey = (connector: DbConnector, keys: string[]) => [connector.networkUid, ...keys].join(':');
+const makeMetaKey = (connector: DbConnector, keys: string[]) => keys.join(':');
 
 export const waitUntilNodeIncluded = (connector: DbConnector, nodeId: string, timeout: number = 60_000): Promise<IMessageMetadata> => {
     let lastMeta: IMessageMetadata;

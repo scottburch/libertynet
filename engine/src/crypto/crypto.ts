@@ -1,7 +1,7 @@
 import {BNInput, ec, ec as EC} from "elliptic";
 import {Some} from "monet";
 import {padEnd} from "lodash/fp";
-import {withCtxAwait} from "@libertynet/with-context";
+import {withCtxAwait} from "@scottburch/with-context";
 import {SignedObj} from "./signed-obj.pb";
 import {PayloadType} from "../payloadType/PayloadType";
 import {UserPayload} from "../payloadType/UserPayload";

@@ -1,6 +1,5 @@
-import {withCtxAwait} from "@libertynet/with-context";
+import {withCtxAwait} from "@scottburch/with-context";
 import {doesUserExist, readUser, storeUser} from "./user";
-import {Network} from "../constants";
 import {passThroughAwait} from "promise-passthrough";
 import {expect} from "chai";
 import {UserPayload} from "../payloadType/UserPayload";
@@ -10,7 +9,7 @@ describe('user dag client', function () {
     this.timeout(40_000);
 
     it('should be able to store and retrieve a user', () => {
-        const connector = newLocalDbConnector('uid');
+        const connector = newLocalDbConnector();
         return Promise.resolve(Date.now().toString())
             .then(username => ({username}))
             .then(ctx => ({
@@ -31,7 +30,7 @@ describe('user dag client', function () {
 
 
     it('should always return the correct user by checking the public key of the oldest user', () => {
-        const connector = newLocalDbConnector(Network.TESTNET);
+        const connector = newLocalDbConnector();
         return Promise.resolve({username: Date.now().toString()})
             .then(withCtxAwait('user1', ctx => Promise.resolve(UserPayload.fromObject({
                 username: ctx.username,
@@ -49,11 +48,11 @@ describe('user dag client', function () {
                 profile: 'bad user',
             }))))
             .then(withCtxAwait('user1Resp', ctx => storeUser(connector, ctx.user1, 'password')))
-            .then(passThroughAwait(ctx => newLocalDbConnector('uid').waitUntilNodeIncluded(newLocalDbConnector('uid'), ctx.user1Resp)))
+            .then(passThroughAwait(ctx => newLocalDbConnector().waitUntilNodeIncluded(newLocalDbConnector(), ctx.user1Resp)))
             .then(withCtxAwait('user2Resp', ctx => storeUser(connector, ctx.user2, 'password')))
-            .then(passThroughAwait(ctx => newLocalDbConnector('uid').waitUntilNodeIncluded(newLocalDbConnector('uid'), ctx.user2Resp)))
+            .then(passThroughAwait(ctx => newLocalDbConnector().waitUntilNodeIncluded(newLocalDbConnector(), ctx.user2Resp)))
             .then(withCtxAwait('user3Resp', ctx => storeUser(connector, ctx.user3, 'diff-password')))
-            .then(passThroughAwait(ctx => newLocalDbConnector('uid').waitUntilNodeIncluded(newLocalDbConnector('uid'), ctx.user3Resp)))
+            .then(passThroughAwait(ctx => newLocalDbConnector().waitUntilNodeIncluded(newLocalDbConnector(), ctx.user3Resp)))
             .then(ctx => readUser(connector, ctx.username))
             .then(user => {
                 expect(user?.profile).to.equal('updated profile');
@@ -61,13 +60,13 @@ describe('user dag client', function () {
     });
 
     it('should return undefined if we try to read a user that does not exist', () =>
-        readUser(newLocalDbConnector(Network.TESTNET), 'user-does-not-exist')
+        readUser(newLocalDbConnector(), 'user-does-not-exist')
             .then(user => expect(user).to.be.undefined)
     );
 
     it('should be able to check if user already exists', () =>
         Promise.resolve(Date.now().toString())
-            .then(username => doesUserExist(newLocalDbConnector(Network.TESTNET), username))
+            .then(username => doesUserExist(newLocalDbConnector(), username))
             .then(exists => expect(exists).to.be.false)
 
             .then(() => ({username: Date.now().toString()}))
@@ -76,8 +75,8 @@ describe('user dag client', function () {
                     profile: '',
                     displayName: ''
                 })}))
-            .then(passThroughAwait(ctx => storeUser(newLocalDbConnector(Network.TESTNET), ctx.user, 'password')))
-            .then(ctx => doesUserExist(newLocalDbConnector(Network.TESTNET), ctx.username))
+            .then(passThroughAwait(ctx => storeUser(newLocalDbConnector(), ctx.user, 'password')))
+            .then(ctx => doesUserExist(newLocalDbConnector(), ctx.username))
             .then(exists => expect(exists).to.be.true)
     );
 });

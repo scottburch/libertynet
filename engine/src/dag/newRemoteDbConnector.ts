@@ -8,8 +8,7 @@ import {SearchSignedObjectsOptions} from "./dag-client";
 
 
 
-export const newRemoteDbConnector = (url: string, networkUid: string): DbConnector => ({
-    networkUid,
+export const newRemoteDbConnector = (url: string): DbConnector => ({
     readSignedObjectsSorted: (connector: DbConnector, keys: string[]): Promise<SignedObj[]> =>
         getRpcClient(url).request('readSignedObjectsSorted', {connector, keys})
             .then(map((obj: string) => SignedObj.decode(Buffer.from(obj, 'base64')))) as Promise<SignedObj[]>,

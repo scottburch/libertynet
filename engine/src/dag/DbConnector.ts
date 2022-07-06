@@ -5,7 +5,6 @@ import {SearchSignedObjectsOptions} from "./dag-client";
 export type NodeId = string;
 
 export interface DbConnector {
-    networkUid: string,
     readSignedObjectsSorted(connector: DbConnector, keys: string[]): Promise<SignedObj[]>,
     storeSignedObject(connector: DbConnector, keys: string[], obj: SignedObj): Promise<NodeId>
     waitUntilNodeIncluded(connector: DbConnector, nodeId: string, timeout?: number): Promise<IMessageMetadata>
